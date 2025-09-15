@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+  html {
+    scroll-behavior: smooth;
+  }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+<header>
+  <h1>My Portfolio</h1>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <!-- Dark/Light Mode Toggle -->
+  <button id="theme-toggle">🌙 Dark Mode</button>
+</header>
+
+<!-- About Section -->
+<section id="about" class="about">
+  <h2>About Me</h2>
+  <div class="about-container">
+    <img src="images/grad pic.jfif" alt="Christopher Sanico" class="about-photo">
+    <p id="about-text">
+      Hello! I’m <strong>Christopher Sanico</strong>, a web developer passionate about creating websites that are both modern and user-friendly. 
+      I enjoy working with HTML, CSS, and C to design solutions that are clean, efficient, and engaging. 
+      What excites me most is turning ideas into real projects that people can easily use and enjoy. 
+      Beyond coding, I value creativity, problem-solving, and continuous learning, always striving to grow as a developer while making a positive impact through my work.
+    </p>
+  </div>
+  <!-- Edit Button -->
+  <button id="edit-about">✏️ Edit</button>
+</section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills">
+    <h2>Skills</h2>
+
+    <!-- Tech Stack -->
+    <div class="tech-stack">
+      <h3>Tech Stack</h3>
+      <div class="icons">
+        <span class="html-icon">HTML</span>
+        <span class="css-icon">CSS</span>
+        <span class="c-icon">C</span>
+      </div>
+    </div>
+
+    <!-- Soft Skills -->
+    <div class="soft-skills">
+      <h3>Soft Skills</h3>
+      <ul>
+        <li>Communication</li>
+        <li>Teamwork</li>
+        <li>Problem-Solving</li>
+        <li>Time Management</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="education">
+  <h2>Educational Background</h2>
+  <ul>
+    <li>
+      <strong>Butuan Christian Community School</strong> — Elementary (With Honor) <br>
+      <em>Graduated March 2017</em>
+    </li>
+    <li>
+      <strong>Butuan Christian Community School</strong> — Junior High School (With Honor) <br>
+      <em>Graduated June 2021</em>
+    </li>
+    <li>
+      <strong>Agusan National High School</strong> — Senior High School (With High Honor) <br>
+      <em>Graduated July 2023</em>
+    </li>
+  </ul>
+</section>
+
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects">
+    <h2>My Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="images/project 1.png" alt="Project One Screenshot">
+        <h3>Product Management System in C</h3>
+        <p>A console-based inventory system that lets users add, display, search, sort, and remove products. 
+        It features dynamic memory allocation, barcode generation, and file handling for saving and loading records.</p>
+      </div>
+
+      <div class="project-card">
+        <img src="images/project 2.jfif" alt="Project Two Screenshot">
+        <h3>Bus Ticketing System</h3>
+        <p>An application that enables passengers to book, cancel, and view tickets while tracking passenger details, 
+        seat availability, and schedules. It generates unique booking references, updates seats in real time, 
+        and stores records using data structures, input validation, dynamic memory, and file handling.</p>
+      </div>
+
+      <div class="project-card">
+        <img src="images/project 3.png" alt="Project Three Screenshot">
+        <h3>Music Playlist System in C</h3>
+        <p>A console-based program to add, play, display, and remove songs using linked lists. Demonstrates dynamic memory, user interaction, and playlist management functionality.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:christophersanico17@gmail.com">christophersanico17@gmail.com</a></p>
+    <p>Phone: <a href="tel:09454502658">0945 450 2658</a></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Christopher Sanico. All rights reserved.</p>
+  </footer>
+
+  <script>
+  const sections = document.querySelectorAll('section');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+  </script>
+  <script>
+  // Dark/Light Mode Toggle
+  const themeToggle = document.getElementById("theme-toggle");
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    if (document.body.classList.contains("dark-mode")) {
+      themeToggle.textContent = "☀️ Light Mode";
+    } else {
+      themeToggle.textContent = "🌙 Dark Mode";
+    }
+  });
+
+  // Edit About Section
+  const editBtn = document.getElementById("edit-about");
+  const aboutText = document.getElementById("about-text");
+  let editing = false;
+
+  editBtn.addEventListener("click", () => {
+    if (!editing) {
+      aboutText.contentEditable = "true";
+      aboutText.focus();
+      editBtn.textContent = "💾 Save";
+      editing = true;
+    } else {
+      aboutText.contentEditable = "false";
+      editBtn.textContent = "✏️ Edit";
+      editing = false;
+    }
+  });
+</script>
+
+</body>
+</html>
